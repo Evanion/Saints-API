@@ -1,0 +1,69 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://localhost:27017/saints_api",
+  "authentication": {
+    "secret": "178052162a4ee5a049458acdac7883bd6183f9e01e2c6d27d56152f8380d4a9d7dd34ddb73b87cc89b3d61e2b2611899c862f2f8802daa1c8ac6befcef0c8eec2c4d99833641e23c631df9e24ea01bae94db75fa232043feb2fac81b7fdec1838a5caa0cb67775562d7ebda419ee48bc386e6dc057ee5d03a6bdddb77113ceb618d4d31dcfa5108b7d51dccdbecae97410db0448dbe14ae027d9878a39b80697e167be1e954f1abaa6c7ff0c5309f67fb53c0ce314525ee41253cf53cfe77819a114af0ab17f199e2b4166c6bc51d02204ca74c7246d3376877ed29154f9cc86209c872b1c54546b9498b3d2c507ce85bc2fe0976ffa9ef8b36492d12ff26268",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
+}
