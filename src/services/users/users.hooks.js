@@ -12,13 +12,16 @@ const restrict = [
 ];
 
 
+const customSteamProfile = require('../../hooks/custom-steam-profile');
+
+
 module.exports = {
   before: {
     all: [],
     find: [commonHooks.unless(hook => commonHooks.isProvider('server'), authenticate('jwt'))], // authenticate('jwt')
     get: [ ...restrict ],
-    create: [ hashPassword() ],
-    update: [ ...restrict, hashPassword() ],
+    create: [hashPassword(), customSteamProfile()],
+    update: [...restrict, hashPassword(), customSteamProfile()],
     patch: [ ...restrict, hashPassword() ],
     remove: [ ...restrict ]
   },

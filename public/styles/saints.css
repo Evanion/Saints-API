@@ -1,0 +1,66 @@
+body {
+  color: #4a4a4a;
+}
+
+a,
+.toggleEndpointList {
+  color: #31D8A0;
+  text-decoration: none;
+}
+
+a:hover, a:focus,
+.swagger-section .swagger-ui-wrap ul#resources li.resource.active div.heading ul.options li a, .swagger-section .swagger-ui-wrap ul#resources li.resource:hover div.heading ul.options li a{
+  color: #31D8A0;
+}
+
+.swagger-section #header,
+body #header {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.swagger-section #header #logo,
+body #header a#logo {
+  padding: 20px 0 20px 60px !important;
+  color: #4A4A4A;
+}
+
+body #header form#api_selector .input a#explore {
+  background-color: #31D8A0 !important;
+  color: #fff;
+}
+
+
+body #header form#api_selector .input a#explore:hover {
+  background-color: #26c993 !important;
+  color: #f2f2f2;
+}
+
+.accessTokenDisplay {
+  color: #4a4a4a;
+  margin-right: 10px;
+}
+.accessTokenDisplay.set {
+  border-bottom: 1px dotted #333; position: relative; cursor: pointer;
+}
+.accessTokenDisplay.set:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  white-space: nowrap;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 3px 7px;
+  color: #FFF;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  right: 0;
+  bottom: -30px;
+}
+
+#message-bar {
+  margin-top: 51px;
+}

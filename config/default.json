@@ -59,6 +59,11 @@
         "permissions"
       ]
     },
+    "steam": {
+      "realm": "http://localhost:3030",
+      "apiKey": "394F928527FC6C1CA669318C99E2E89D",
+      "successRedirect": "http://localhost:3000/"
+    },
     "cookie": {
       "enabled": true,
       "name": "feathers-jwt",

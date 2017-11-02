@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const feathers = require('feathers');
 const configuration = require('feathers-configuration');
+const swagger = require('feathers-swagger');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
 const socketio = require('feathers-socketio');
@@ -41,6 +42,26 @@ app.configure(hooks());
 app.configure(mongoose);
 app.configure(rest());
 app.configure(socketio());
+app.configure(swagger({
+  docsPath: '/explorer',
+  uiIndex: path.join(__dirname, '../public/docs.html'),
+  info: {
+    title: 'General information',
+    description: 'This is the api for the Saints gaming community. It\'s provided as-is and without any warranty.'
+  },
+  security: {
+    name: 'jwt',
+    type: 'apiKey',
+    in: 'header',
+  },
+  securityDefinitions: {
+    jwt: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header',
+    },
+  }
+}));
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);

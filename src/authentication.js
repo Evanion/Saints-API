@@ -2,12 +2,17 @@ const authentication = require('feathers-authentication');
 const jwt = require('feathers-authentication-jwt');
 const local = require('feathers-authentication-local');
 const oauth2 = require('feathers-authentication-oauth2');
+const openid = require('feathers-authentication-openid');
 const GoogleStrategy = require('passport-google-oauth20');
+const SteamStrategy = require('passport-steam');
 const FacebookStrategy = require('passport-facebook');
+const authHandler = require('./handlers/auth-handler');
 
 module.exports = function () {
   const app = this;
   const config = app.get('authentication');
+
+  const handler = authHandler(app);
 
   // Set up authentication with the secret
   app.configure(authentication(config));
@@ -23,6 +28,12 @@ module.exports = function () {
     name: 'facebook',
     Strategy: FacebookStrategy
   }, config.facebook)));
+
+  app.configure(openid(Object.assign({
+    name: 'steam',
+    Strategy: SteamStrategy,
+    handler: handler(config.steam.successRedirect)
+  }, config.steam)));
 
   // The `authentication` service is used to create a JWT.
   // The before `create` hook registers strategies that can be used
